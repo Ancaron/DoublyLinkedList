@@ -100,15 +100,18 @@ void ListeFreigeben(DbList *&start){
  }
 }
 
-void ListeFreigebenRek(DbList *&start,DbList *&startOriginal){
+void ListeFreigebenRek(DbList *&start,DbList startOriginal){
+    if(start==NULL){
+    }else
     if(start==startOriginal){
         (start->prev)->next=NULL;
     }
-    else if(start==NULL){
-    }else{
-        ListeFreigebenRek(start->next,start);
+     else{
+        ListeFreigebenRek(start->next,startOriginal);
         free(start);
+        start = NULL;
     }
+
 }
 
 
